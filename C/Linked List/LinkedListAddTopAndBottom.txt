@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct node
+{
+    int data;
+    node *link;
+};
+
+node *Root = new node;
+
+int main()
+{
+  Root->data = 1;
+  Root->link = NULL;
+  
+  //Add from front
+  int i = 1;
+  while(i<10)
+  {
+      i++;
+      node *n = new node;
+      n->data = i;
+      n->link = Root;
+      Root = n;
+  }
+  
+  //display
+  node *ptr;
+  ptr = Root;
+  while(ptr != NULL)
+  {
+      cout<<ptr->data<<" ";
+      ptr = ptr->link;
+  }
+  
+  //Add from bottom
+  i = 1;
+  while(i<10)
+  {
+      i++;
+      node *p;
+      p = Root;
+      while(p->link != NULL)
+      {
+          p = p->link;
+      }
+      node *n = new node;
+      n->data = i;
+      n->link = NULL;
+      p->link = n;
+  }
+  cout<<endl;    
+  //display
+  ptr = Root;
+  while(ptr != NULL)
+  {
+      cout<<ptr->data<<" ";
+      ptr = ptr->link;
+  }
+  
+}
